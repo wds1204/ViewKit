@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="StepView">
+        <attr name="stepOutColor" format="color"/>
+        <attr name="stepInnerColor" format="color"/>
+        <attr name="borderWidth" format="dimension"/>
+        <attr name="stepWidth" format="dimension"/>
+        <attr name="stepTextSize" format="dimension"/>
+        <attr name="stepTextColor" format="color"/>
+    </declare-styleable>
+</resources>
