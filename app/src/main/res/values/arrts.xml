@@ -8,4 +8,8 @@
         <attr name="stepTextSize" format="dimension"/>
         <attr name="stepTextColor" format="color"/>
     </declare-styleable>
+    <declare-styleable name="ColorTrackTextView">
+        <attr name="startColor" format="color"/>
+        <attr name="endColor" format="color"/>
+    </declare-styleable>
 </resources>
