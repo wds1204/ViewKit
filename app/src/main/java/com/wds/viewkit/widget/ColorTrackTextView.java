@@ -9,6 +9,7 @@ import android.graphics.Rect;
 import android.icu.text.RelativeDateTimeFormatter;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -105,8 +106,7 @@ public class ColorTrackTextView extends androidx.appcompat.widget.AppCompatTextV
     public void drawText(Canvas canvas, int startValue, int endValue, Paint paint) {
         canvas.save();
 
-        /*绘制不变色的  0～midValu*/
-        int midValue = (int) (getWidth() * mCurrentProgress);
+        /*绘制不变色的  0～midValue*/
         canvas.clipRect(startValue, 0, endValue, getHeight());
 
         String text = getText().toString();
@@ -120,5 +120,12 @@ public class ColorTrackTextView extends androidx.appcompat.widget.AppCompatTextV
         canvas.drawText(text, dx, dy, paint);
         canvas.restore();
     }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+
+        return super.dispatchTouchEvent(event);
+    }
+
 
 }

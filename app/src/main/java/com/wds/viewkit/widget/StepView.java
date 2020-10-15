@@ -9,6 +9,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.wds.viewkit.R;
@@ -113,6 +114,8 @@ public class StepView extends View {
         int baseline=getHeight()/2+dy;
         canvas.drawText(stepText,dx,baseline, textPaint);
 
+//        canvas.drawCircle();
+
     }
 
     public void setMaxStep(int mMaxStep) {
@@ -123,4 +126,34 @@ public class StepView extends View {
         this.mCurrentStep=currentStep;
         invalidate();
     }
+
+//
+//    @Override
+//    public boolean onTouchEvent(MotionEvent event) {
+//        super.onTouchEvent(event);
+//        return true;
+//    }
+//
+//    //为代码
+//    public boolean _dispatchTouchEvent(MotionEvent event) {
+//        boolean res=false;
+//
+//
+//        final boolean disallowIntercept=FLAG_DISALLOW_INTERCEPT;
+//        if(!disallowIntercept&&onInterceptTouchEvent(event)) {//ViewGroup的情况
+//            if(onTouchListener&&onTouchListener.onTouch()) {
+//                return true;
+//            }
+//            res=onTouchEvent(event);
+//        }else if(DOWN) {
+//            for(childs){
+//                res=child.dispatchTouchEvent();
+//            }
+//        }else {
+//            target.child.dispatchTouchEvent();
+//        }
+//
+//        return res;
+//
+//    }
 }

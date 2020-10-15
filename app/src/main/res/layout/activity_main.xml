@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -20,17 +20,45 @@
 <!--        app:stepTextColor="@color/colorAccent"-->
 <!--        app:stepTextSize="40sp" />-->
 
-    <com.wds.viewkit.widget.ColorTrackTextView
-        android:id="@+id/colorTrackTextView"
-        android:text="Hello World"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:startColor="@color/colorPrimary"
-        app:endColor="@color/colorAccent"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-</androidx.constraintlayout.widget.ConstraintLayout>
+<!--    <com.wds.viewkit.widget.ColorTrackTextView-->
+<!--        android:id="@+id/colorTrackTextView"-->
+<!--        android:text="Hello World"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:startColor="@color/colorPrimary"-->
+<!--        app:endColor="@color/colorAccent"-->
+<!--        android:textSize="20sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        />-->
+
+
+
+<!--        <com.wds.viewkit.widget.LayoutView1-->
+<!--            android:background="@color/colorAccent"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
+<!--            <com.wds.viewkit.widget.LayoutView2-->
+<!--                android:background="@color/colorPrimary"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="300dp">-->
+
+<!--                <com.wds.viewkit.MyTextView-->
+<!--                    android:padding="10dp"-->
+<!--                    android:text="fsfsfsf"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="80dp"/>-->
+<!--            </com.wds.viewkit.widget.LayoutView2>-->
+
+<!--        </com.wds.viewkit.widget.LayoutView1>-->
+
+    <com.wds.viewkit.widget.CircleView
+        android:id="@+id/circleview"
+        app:circleSize="20dp"
+        app:circleTextColor="@color/colorPrimaryDark"
+        app:circleTextSize="20sp"
+        android:layout_height="200dp"
+        android:layout_width="200dp" />
+</RelativeLayout>

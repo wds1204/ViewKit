@@ -12,4 +12,17 @@
         <attr name="startColor" format="color"/>
         <attr name="endColor" format="color"/>
     </declare-styleable>
+
+    <declare-styleable name="SlidingMenu">
+        <attr name="rightPadding" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="CircleView">
+        <attr name="innerBackgroundcolor" format="color"/>
+        <attr name="defaultColor" format="color"/>
+        <attr name="loadingColor" format="color"/>
+        <attr name="circleSize" format="dimension"/>
+        <attr name="circleTextSize" format="dimension"/>
+        <attr name="circleTextColor" format="color"/>
+    </declare-styleable>
 </resources>
