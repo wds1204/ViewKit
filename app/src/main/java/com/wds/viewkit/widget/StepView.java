@@ -9,6 +9,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.wds.viewkit.R;
@@ -122,5 +123,14 @@ public class StepView extends View {
     public void setCurrentStep(int currentStep){
         this.mCurrentStep=currentStep;
         invalidate();
+    }
+
+
+    @Override public boolean onTouchEvent(MotionEvent event) {
+        return super.onTouchEvent(event);
+    }
+
+    @Override public boolean dispatchTouchEvent(MotionEvent event) {
+        return super.dispatchTouchEvent(event);
     }
 }
