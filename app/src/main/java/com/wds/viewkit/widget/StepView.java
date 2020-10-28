@@ -114,8 +114,6 @@ public class StepView extends View {
         int baseline=getHeight()/2+dy;
         canvas.drawText(stepText,dx,baseline, textPaint);
 
-//        canvas.drawCircle();
-
     }
 
     public void setMaxStep(int mMaxStep) {
@@ -127,33 +125,12 @@ public class StepView extends View {
         invalidate();
     }
 
-//
-//    @Override
-//    public boolean onTouchEvent(MotionEvent event) {
-//        super.onTouchEvent(event);
-//        return true;
-//    }
-//
-//    //为代码
-//    public boolean _dispatchTouchEvent(MotionEvent event) {
-//        boolean res=false;
-//
-//
-//        final boolean disallowIntercept=FLAG_DISALLOW_INTERCEPT;
-//        if(!disallowIntercept&&onInterceptTouchEvent(event)) {//ViewGroup的情况
-//            if(onTouchListener&&onTouchListener.onTouch()) {
-//                return true;
-//            }
-//            res=onTouchEvent(event);
-//        }else if(DOWN) {
-//            for(childs){
-//                res=child.dispatchTouchEvent();
-//            }
-//        }else {
-//            target.child.dispatchTouchEvent();
-//        }
-//
-//        return res;
-//
-//    }
+
+    @Override public boolean onTouchEvent(MotionEvent event) {
+        return super.onTouchEvent(event);
+    }
+
+    @Override public boolean dispatchTouchEvent(MotionEvent event) {
+        return super.dispatchTouchEvent(event);
+    }
 }
