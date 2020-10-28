@@ -25,4 +25,14 @@
         <attr name="circleTextSize" format="dimension"/>
         <attr name="circleTextColor" format="color"/>
     </declare-styleable>
+
+
+    <declare-styleable name="RatingBar">
+        <attr name="spaceBetween" format="dimension"/>
+        <attr name="defualSrc" format="color"/>
+        <attr name="focusSrc" format="color"/>
+        <attr name="circleSize" format="dimension"/>
+        <attr name="circleTextSize" format="dimension"/>
+        <attr name="circleTextColor" format="color"/>
+    </declare-styleable>
 </resources>
