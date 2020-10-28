@@ -1,6 +1,9 @@
 package com.wds.viewkit;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 import com.wds.viewkit.widget.ColorTrackTextView;
 import com.wds.viewkit.widget.StepView;
@@ -15,6 +18,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.slide_main);
+        TextView tv_content = findViewById(R.id.tv_content);
+        tv_content.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                Log.e("TAG", "tv_content===");
+            }
+        });
 
 //        changeTextColor();
     }

@@ -3,6 +3,7 @@ package com.wds.viewkit.widget;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -11,6 +12,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 
@@ -20,9 +22,8 @@ public class SlideView extends HorizontalScrollView {
     private final GestureDetector gestureDetector;
     private final Context mContext;
     private final int mMenuWidth;
-    private View mMenuView;
-    ;//菜单View,
-    private View mContentView;//内容View
+    private View mMenuView;//菜单View,
+    private ViewGroup mContentView;//内容View
     private ImageView mShadowIv;
     private boolean mMenuIsOpen;
     private boolean isIntercept;
@@ -102,20 +103,36 @@ public class SlideView extends HorizontalScrollView {
         if (containerChildCount > 2) {
             throw new IllegalStateException("SlidingMenu 根布局LinearLayout下面只允许两个布局,菜单布局和主页内容布局");
         }
-        /*容器中的菜单布局和内容布局*/
+        // 4.2.2.获取菜单和内容布局
         mMenuView = container.getChildAt(0);
 
-        mContentView = container.getChildAt(1);
+        // 7.给内容添加阴影效果
+        // 7.1 先new一个主内容布局用来放  阴影和LinearLayout原来的内容布局
+        mContentView = new FrameLayout(mContext);
+        ViewGroup.LayoutParams contentParams = new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
+        mContentView.setLayoutParams(contentParams);
+        mContentView.setBackgroundColor(Color.parseColor("#ffffff"));
 
-        // 3.指定内容和菜单布局的宽度
-        // 3.1 菜单的宽度 = 屏幕的宽度 - 自定义的右边留出的宽度
+        // 7.2 获取原来的内容布局，并把原来的内容布局从LinearLayout中异常
+        View oldContentView = container.getChildAt(1);
+        container.removeView(oldContentView);
+
+        // 7.3 把原来的内容View 和 阴影加到我们新创建的内容布局中
+        mContentView.addView(oldContentView);
+        // 7.3.1 创建阴影ImageView
+        mShadowIv = new ImageView(mContext);
+        mShadowIv.setBackgroundColor(Color.parseColor("#99000000"));
+        mContentView.addView(mShadowIv);
+
+        // 7.4 把包含阴影的新的内容View 添加到 LinearLayout中
+        container.addView(mContentView);
+
+        // 4.2.3.指定内容和菜单布局的宽度
+        // 4.2.3.1 菜单的宽度 = 屏幕的宽度 - 自定义的右边留出的宽度
         mMenuView.getLayoutParams().width = mMenuWidth;
-        // 3.2 内容的宽度 = 屏幕的宽度
-        mContentView.getLayoutParams().width = getScreenWidth();
-
-        mMenuView.getLayoutParams().width = mMenuWidth;
-
-        mContentView.getLayoutParams().width = getScreenWidth();
+        // 4.2.3.2 内容的宽度 = 屏幕的宽度
+        oldContentView.getLayoutParams().width = getScreenWidth();
 
     }
 
@@ -201,13 +218,19 @@ public class SlideView extends HorizontalScrollView {
 
     @Override
     protected void onScrollChanged(int l, int t, int oldl, int oldt) {
-        super.onScrollChanged(l, t, oldl, oldt);
+//        super.onScrollChanged(l, t, oldl, oldt);
 
 
         // l 是 当前滚动的x距离  在滚动的时候会不断反复的回调这个方法
         Log.e("TAG", "onScrollChanged=========" + l + "");
         // 6. 实现菜单左边抽屉样式的动画效果
-//        mMenuView.setTranslationX(l*0.8f);
+        mMenuView.setTranslationX(l*0.7f);
+        // 7.给内容添加阴影效果 - 计算梯度值
+        float gradientValue = l * 1f / mMenuWidth;// 这是  1 - 0 变化的值
+
+        // 7.给内容添加阴影效果 - 给阴影的View指定透明度   0 - 1 变化的值
+        float shadowAlpha = 1 - gradientValue;
+        mShadowIv.setAlpha(shadowAlpha);
 
         // 7.给内容添加阴影效果 - 计算梯度值
 //        float gradientValue = l * 1f / mMenuWidth;// 这是  1 - 0 变化的值
@@ -215,6 +238,7 @@ public class SlideView extends HorizontalScrollView {
 //         7.给内容添加阴影效果 - 给阴影的View指定透明度   0 - 1 变化的值
 //        float shadowAlpha = 1 - gradientValue;
 //        mShadowIv.setAlpha(shadowAlpha);
+
 
     }
 }
