@@ -1,71 +1,34 @@
 package com.wds.viewkit;
 
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.DecelerateInterpolator;
-import android.widget.LinearLayout;
+import android.widget.TextView;
 
-import com.wds.viewkit.widget.CircleView;
 import com.wds.viewkit.widget.ColorTrackTextView;
-import com.wds.viewkit.widget.ShapeView;
 import com.wds.viewkit.widget.StepView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     StepView stepView;
-    CircleView circleview;
-    ShapeView shapeview;
     ColorTrackTextView colorTrackTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        shapeview = findViewById(R.id.shapeview);
-
-
-        setLoadingProgress();
-
-        changeView();
-//        changeTextColor();
-    }
-
-    private void changeView() {
-        shapeview.exchange();
-    }
-
-    public void setLoadingProgress() {
-        circleview = findViewById(R.id.circleview);
-
-        ValueAnimator valueAnimator = ObjectAnimator.ofFloat(0, 100);
-        valueAnimator.setDuration(3000);
-//        valueAnimator.setInterpolator(new DecelerateInterpolator());
-
-        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                float currentStep = (float) animation.getAnimatedValue();
-
-                circleview.setCurrentProgress((int) currentStep);
-
+        setContentView(R.layout.slide_main);
+        TextView tv_content = findViewById(R.id.tv_content);
+        tv_content.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                Log.e("TAG", "tv_content===");
             }
         });
 
-        valueAnimator.start();
-
+//        changeTextColor();
     }
 
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
-        return super.dispatchTouchEvent(ev);
-    }
-
-    //    public void changeTextColor() {
+//    public void changeTextColor() {
 //        colorTrackTextView = findViewById(R.id.colorTrackTextView);
 //        colorTrackTextView.setmDirection(ColorTrackTextView.Direction.DIRECTION_RIGHT);//设置从右到左
 //        ValueAnimator valueAnimator = ObjectAnimator.ofFloat(0, 1);
